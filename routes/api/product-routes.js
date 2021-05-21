@@ -13,20 +13,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+// This is working I can use it as a referance for the others.
 // get one product
 router.get('/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id, {
-      // I think the route is breaking on this line 
-      // be sure to include its associated Category and Tag data
-      include: [{ model: Category, through: Tag, as: 'product_data' }]
+      include: [{ model: Category,  modle: Tag  }]
     });
-
-    if (!productData) {
-      res.status(404).json({ message: 'No data found with given id' });
-      return;
-    }
-
     res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
