@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  // update a category by its `id` value
+  // update a category by its `id` value Working use again
   const categoryData = await Category.update(
     {
       category_name: req.body.category_name,
