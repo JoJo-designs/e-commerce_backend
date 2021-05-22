@@ -12,13 +12,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-// this one is broken for some reason not sure why But I will 
-// I am getting a 500 error so it is an issue with the server
-// not the code I GUESS
+
 router.get('/:id', async (req, res) => {
   try {
     const tagData = await Tag.findByPk(req.perams.id, {
-      include: [{ model: ProductTag, Product }]
+      include: [{ model: ProductTag, model: Product }]
     });
     res.status(200).json(tagData);
   } catch (err) {
